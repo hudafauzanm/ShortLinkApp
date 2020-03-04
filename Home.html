@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/tailwind.min.css" />
+    <title></title>
+</head>
+<nav class="flex items-center justify-between flex-wrap bg-indigo-600 p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+      <span class="font-semibold text-xl tracking-tight">Short.Link</span>
+    </div>
+    <div class="block lg:hidden">
+      <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-indigo-400 hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div class="text-sm lg:flex-grow">
+      </div>
+      <div>
+        <a href="" class="modal-open inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+      </div>
+      <div>
+        <a href="http://192.168.17.39:8080/RegisterForm.html" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Register</a>
+      </div>
+    </div>
+  </nav>
+<body>
+    <div class="flex mb-4 flex content-center flex-wrap h-24" >
+        <div class="w-1/3 h-12"></div>
+        <div class="w-1/3 h-12"></div>
+        <div class="w-1/3 h-12"></div>
+      </div>
+    
+    <div class="flex mb-4 flex content-center flex-wrap bg-gray-200 h-48" > 
+        <div class="w-1/3 h-12"></div>
+        <div class="w-1/3 h-12">
+            <form class="w-full max-w-3xl" id="shortlink_form" method="POST">
+            <div class="flex items-center border-b border-b-2 border-indigo-600 py-2">
+              <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your long URL here...." aria-label="Full name" name="url" id="url">
+              <button class=" flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                Shorten
+              </button>
+            </div>
+            </form>
+            <p class="text-xl content-center" id="shorter">SHORT.LINK</p>
+    </div>
+        <div class="w-1/3 h-12"></div>
+      </div>
+  
+  <!--Modal-->
+  <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      
+      <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+        <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+        </svg>
+      </div>
+
+      <!-- Add margin if you want to see some of the overlay behind the modal-->
+      <div class="modal-content py-4 text-left px-6">
+        <!--Title-->
+        <div class="flex justify-between items-center pb-3">
+          <p class="text-2xl font-bold">Login Form</p>
+          <div class="modal-close cursor-pointer z-50">
+            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!--Body-->
+        <div>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="login_form">
+                <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Email
+                  </label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Username">
+                </div>
+                <div class="mb-6">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password
+                  </label>
+                  <input class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+                </div>
+                <div class="flex items-center justify-between">
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Sign In
+                  </button>
+                  <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                    Forgot Password?
+                  </a>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $("#shortlink_form").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            var json = {"url" : document.getElementById("url").value}
+            var hasil = JSON.stringify(json);
+            console.log(hasil);
+            $.ajax({
+                type: "POST",
+                url: 'http://192.168.17.39:7000/api/ShortLink/',
+                data: hasil,
+                contentType: 'application/json',
+                dataType: 'json', // serializes the form's elements.
+                success: function(data)
+                {
+                    document.getElementById("shorter").innerHTML = data.data;
+                }
+                });
+            });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $("#login_form").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            var json = {"email" : document.getElementById("email").value,
+            "password" : document.getElementById("password").value}
+            var hasil = JSON.stringify(json);
+            console.log(hasil);
+            $.ajax({
+                type: "POST",
+                url: 'http://192.168.17.39:7000/api/Login',
+                data: hasil,
+                contentType: 'application/json',
+                dataType: 'json', // serializes the form's elements.
+                success: function(data)
+                {
+                    if(data.role == '2')
+                    {
+                      Cookies.set('jwttoken', data.data);
+                      Cookies.set('userid', data.id);
+                      window.location.href = "http://192.168.17.39:8080/AccountView.html"
+                    }
+                    else if(data.role == '1')
+                    {
+                      Cookies.set('jwttoken', data.data);
+                      Cookies.set('userid', data.id);
+                      window.location.href = "http://192.168.17.39:8080/AdminView.html"
+                    }
+                }
+                });
+            });
+    });
+  </script>
+  <script>
+    var openmodal = document.querySelectorAll('.modal-open')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+    	event.preventDefault()
+    	toggleModal()
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay')
+    overlay.addEventListener('click', toggleModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+    	isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+    	toggleModal()
+      }
+    };
+    
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+  </script>
+  <script>
+    var openmodal = document.querySelectorAll('.modal-open2')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+    	event.preventDefault()
+    	toggleModal()
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay')
+    overlay.addEventListener('click', toggleModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+    	isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+    	toggleModal()
+      }
+    };
+    
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal2')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+  </script>
+</body>
+</html>
